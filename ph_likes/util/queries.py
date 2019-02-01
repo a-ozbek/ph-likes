@@ -1,4 +1,5 @@
 import psycopg2
+import pandas as pd
 from ph_likes.util import settings
 
 
@@ -22,12 +23,27 @@ def get_table_names():
 
 
 def get_post_table():
-    pass
+    query = "select * from producthunt_post"
+    cur = get_connection_cursor()
+    cur.execute(query)
+    post_table = cur.fetchall()
+    df = pd.DataFrame(post_table)
+    return df
 
 
 def get_postlike_table():
-    pass
+    query = "select * from producthunt_postlike"
+    cur = get_connection_cursor()
+    cur.execute(query)
+    post_table = cur.fetchall()
+    df = pd.DataFrame(post_table)
+    return df
 
 
 def get_phuser_table():
-    pass
+    query = "select * from producthunt_phuser"
+    cur = get_connection_cursor()
+    cur.execute(query)
+    post_table = cur.fetchall()
+    df = pd.DataFrame(post_table)
+    return df

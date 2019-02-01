@@ -28,6 +28,7 @@ def get_post_table():
     cur.execute(query)
     post_table = cur.fetchall()
     df = pd.DataFrame(post_table)
+    df.columns = [d[0] for d in cur.description]
     return df
 
 
@@ -37,6 +38,7 @@ def get_postlike_table():
     cur.execute(query)
     post_table = cur.fetchall()
     df = pd.DataFrame(post_table)
+    df.columns = [d[0] for d in cur.description]
     return df
 
 
@@ -46,4 +48,5 @@ def get_phuser_table():
     cur.execute(query)
     post_table = cur.fetchall()
     df = pd.DataFrame(post_table)
+    df.columns = [d[0] for d in cur.description]
     return df

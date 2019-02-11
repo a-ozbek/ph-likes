@@ -11,6 +11,7 @@ def get_embedding_model(n_users, n_posts, embedding_dim=16):
     x1 = layers.Embedding(input_dim=n_users, output_dim=embedding_dim)(input_user)
     x2 = layers.Embedding(input_dim=n_posts, output_dim=embedding_dim)(input_post)
     x = layers.multiply([x1, x2])
+    x = layers.Flatten()(x)
     x = layers.Dense(1, activation='sigmoid')(x)
     model = models.Model(inputs=[input_user, input_post], outputs=x)
     

@@ -50,3 +50,22 @@ def get_phuser_table():
     df = pd.DataFrame(post_table)
     df.columns = [d[0] for d in cur.description]
     return df
+
+def get_topic_table():
+    query = "select * from producthunt_topic"
+    cur = get_connection_cursor()
+    cur.execute(query)
+    post_table = cur.fetchall()
+    df = pd.DataFrame(post_table)
+    df.columns = [d[0] for d in cur.description]
+    return df
+
+
+def get_posttopic_table():
+    query = "select * from producthunt_posttopic"
+    cur = get_connection_cursor()
+    cur.execute(query)
+    post_table = cur.fetchall()
+    df = pd.DataFrame(post_table)
+    df.columns = [d[0] for d in cur.description]
+    return df
